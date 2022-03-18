@@ -23,16 +23,22 @@ public class fly : MonoBehaviour
 
     // Update is called once per frame
     public float period = 0.0f;
+    public float min = -5f, max = 5f;
+    public float speed = 0f;
+
     void Update()
     {
         var rb = GetComponent<Rigidbody>();
         if (period > 0.1)
         {
-            //Do Stuff
+
             period = 0;
-            rb.velocity = RandomVector(-5f, 5f);
+            rb.velocity = RandomVector(min, max);
         }
         period += UnityEngine.Time.deltaTime;
+
+       
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
     }
     void OnTriggerEnter(Collider collision)
@@ -41,7 +47,7 @@ public class fly : MonoBehaviour
         {
             score.Score = score.Score + 1;
             gameObject.SetActive(false);
-            //Destroy(gameObject);
+            Destroy(gameObject);
 
         }
         else
