@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class fly : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -32,14 +34,14 @@ public class fly : MonoBehaviour
         }
         period += UnityEngine.Time.deltaTime;
 
-
     }
-    //Dissappear
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.name == "Stick")
         {
+            score.Score = score.Score + 1;
             gameObject.SetActive(false);
+            //Destroy(gameObject);
 
         }
         else
@@ -47,4 +49,6 @@ public class fly : MonoBehaviour
 
         }
     }
+
+
 }
