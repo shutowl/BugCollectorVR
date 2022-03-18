@@ -13,17 +13,21 @@ public class BugMovement : MonoBehaviour
     public Behavior behavior;
 
     public GameObject player;
-    public int speed = 20;
+    private Vector3 startPlayerPos;
+    public int speed = 20;              //Determine speed of bug
 
-    //private Vector3 position;
+    public float waveSpeed = 0.2f;      //Determine wave frequency
+    public float waveHeight = 0.4f;     //Determine wave amplitude
+    private float yStart;               //Starting wave y position (minimum)
+    private float yEnd;                 //Ending wave y position   (maximum)
 
-    // Start is called before the first frame update
     void Start()
     {
-        //position = transform.position;
+        yStart = transform.position.y;
+        yEnd = transform.position.y + waveHeight;
+        startPlayerPos = player.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         switch (behavior.ToString().ToLower())
@@ -34,9 +38,21 @@ public class BugMovement : MonoBehaviour
                 break;
             case ("rotate"):
                 //Rotate around Player
-                transform.RotateAround(player.transform.position, Vector3.up, speed * Time.deltaTime);
+                transform.RotateAround(startPlayerPos, Vector3.up, speed * Time.deltaTime);
+                
+                //Time bounces between 0 and 1 at a rate of waveSpeed
+                float time = Mathf.PingPong(Time.time * waveSpeed, 1);
+
+                //Ease in out function
+                //Found here: https://easings.net/#easeInOutSine
+                transform.position = Vector3.Lerp(new Vector3(transform.position.x, yStart, transform.position.z), 
+                                                  new Vector3(transform.position.x, yEnd, transform.position.z), 
+                                                  -(Mathf.Cos(Mathf.PI * time) - 1) / 2);
+                
                 break;
         }
+
+
 
 
     }
