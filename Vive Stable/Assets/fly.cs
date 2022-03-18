@@ -26,7 +26,13 @@ public class fly : MonoBehaviour
     public float min = -5f, max = 5f;
     public float speed = 0f;
 
-    void Update()
+    public float x_range = 10, y_range = 10, z_range = 10;
+
+
+
+
+
+    void FixedUpdate()
     {
         var rb = GetComponent<Rigidbody>();
         if (period > 0.1)
@@ -37,8 +43,18 @@ public class fly : MonoBehaviour
         }
         period += UnityEngine.Time.deltaTime;
 
-       
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
+
+
+        Vector3 currentPosition = transform.position;
+
+        currentPosition.y = Mathf.Clamp(currentPosition.y, 0, y_range);
+        currentPosition.x = Mathf.Clamp(currentPosition.x, -x_range, x_range);
+        currentPosition.z = Mathf.Clamp(currentPosition.z, -z_range, z_range);
+
+        transform.position = currentPosition;
+
+
 
     }
     void OnTriggerEnter(Collider collision)
@@ -47,7 +63,7 @@ public class fly : MonoBehaviour
         {
             score.Score = score.Score + 1;
             gameObject.SetActive(false);
-            Destroy(gameObject);
+            //Destroy(gameObject);
 
         }
         else
