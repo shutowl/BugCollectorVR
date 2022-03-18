@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.createwithvrroom.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "D:\\BugCatcherGroup\\BugCollectorVR\\VR Room Project\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "D:\\BugCatcherGroup\\BugCollectorVR\\Oculus Stable\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Create With VR Room [Testing]"
