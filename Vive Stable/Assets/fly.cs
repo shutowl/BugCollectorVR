@@ -34,4 +34,17 @@ public class fly : MonoBehaviour
 
 
     }
+    //Dissappear
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.name == "Stick")
+        {
+            gameObject.SetActive(false);
+
+        }
+        else
+        {
+
+        }
+    }
 }
