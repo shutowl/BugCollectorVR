@@ -27,7 +27,7 @@ public class fly : MonoBehaviour
     public float speed = 0f;
 
     public float x_range = 10, y_range = 10, z_range = 10;
-    public int rotationFactor = 40;
+    public int rotationFactor = 5;
 
 
     
@@ -38,7 +38,7 @@ public class fly : MonoBehaviour
         var rb = GetComponent<Rigidbody>();
         Vector3 controlVector = RandomVector(min, max);
         
-        if (period > 0.1)
+        if (period > 0.3)
         {
             //Vector3 controlVector = RandomVector(min, max);
             period = 0;
@@ -46,18 +46,18 @@ public class fly : MonoBehaviour
             //rb.velocity = Vector3.Scale(controlVector, new Vector3(1, Mathf.Cos(controlVector.y), 1));
             rb.velocity = controlVector;
             controlVector = new Vector3(0, controlVector.y * rotationFactor, 0);// control rotation
-            //transform.Rotate(controlVector);
+            transform.Rotate(controlVector);
             //transform.rotation = Quaternion.Euler(controlVector);
         }
         period += UnityEngine.Time.deltaTime;
 
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
-        transform.Rotate(new Vector3(0,rotationFactor*Time.deltaTime, 0 ));
+        //transform.Rotate(new Vector3(0,rotationFactor*Time.deltaTime, 0 ));
 
         Vector3 currentPosition = transform.position;
 
-        currentPosition.y = Mathf.Clamp(currentPosition.y, 0, y_range);
+        currentPosition.y = Mathf.Clamp(currentPosition.y, 1, y_range);
         currentPosition.x = Mathf.Clamp(currentPosition.x, -x_range, x_range);
         currentPosition.z = Mathf.Clamp(currentPosition.z, -z_range, z_range);
 
