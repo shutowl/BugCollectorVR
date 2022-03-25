@@ -27,6 +27,7 @@ public class fly : MonoBehaviour
     public float speed = 0f;
 
     public float x_range = 10, y_range = 10, z_range = 10;
+    public int rotationFactor = 8;
 
 
 
@@ -35,11 +36,15 @@ public class fly : MonoBehaviour
     void FixedUpdate()
     {
         var rb = GetComponent<Rigidbody>();
-        if (period > 0.1)
+        if (period > 0.5)
         {
-
+            Vector3 controlVector = RandomVector(min, max);
             period = 0;
-            rb.velocity = RandomVector(min, max);
+
+            rb.velocity = Vector3.Scale(controlVector, new Vector3(1, Mathf.Cos(controlVector.y), 1));
+            controlVector = new Vector3(0, controlVector.y * rotationFactor, 0);// control rotation
+            transform.Rotate(controlVector);
+            //transform.rotation = Quaternion.Euler(controlVector);
         }
         period += UnityEngine.Time.deltaTime;
 
@@ -59,7 +64,7 @@ public class fly : MonoBehaviour
     }
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "Stick")
+        if (collision.gameObject.tag == "net")
         {
             score.Score = score.Score + 1;
             gameObject.SetActive(false);
