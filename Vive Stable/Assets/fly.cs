@@ -27,24 +27,33 @@ public class fly : MonoBehaviour
     public float speed = 0f;
 
     public float x_range = 10, y_range = 10, z_range = 10;
+    public int rotationFactor = 40;
 
 
-
+    
 
 
     void FixedUpdate()
     {
         var rb = GetComponent<Rigidbody>();
+        Vector3 controlVector = RandomVector(min, max);
+        
         if (period > 0.1)
         {
-
+            //Vector3 controlVector = RandomVector(min, max);
             period = 0;
-            rb.velocity = RandomVector(min, max);
+
+            //rb.velocity = Vector3.Scale(controlVector, new Vector3(1, Mathf.Cos(controlVector.y), 1));
+            rb.velocity = controlVector;
+            controlVector = new Vector3(0, controlVector.y * rotationFactor, 0);// control rotation
+            //transform.Rotate(controlVector);
+            //transform.rotation = Quaternion.Euler(controlVector);
         }
         period += UnityEngine.Time.deltaTime;
 
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
+        transform.Rotate(new Vector3(0,rotationFactor*Time.deltaTime, 0 ));
 
         Vector3 currentPosition = transform.position;
 
