@@ -4,51 +4,86 @@ using UnityEngine;
 
 
 
+
 public class fly : MonoBehaviour
 {
     // Start is called before the first frame update
 
     private Vector3 RandomVector(float min, float max)
     {
-        var x = Random.Range(min, max);
-        var y = Random.Range(min, max);
-        var z = Random.Range(min, max);
+        Random.InitState(System.Environment.TickCount);
+        float x = Random.Range(min, max); ;
+        float y = Random.Range(0f, max); ;
+        float z = Random.Range(min, max); ;
         return new Vector3(x, y, z);
     }
+
+
+
+    // Update is called once per frame
+    //public float period = 0.0f;
+    public float min = -5f, max = 5f;
+    public float speed = 1;
+
+    public float x_range = 10, y_range = 10, z_range = 10;
+    public int rotationFactor = 2;
+
+    private static Vector3 controlVector;
+    private Vector3 rotate_Vector;
+
+    private bool first = true;
+
+
+
+
+    public static bool isEqual(Vector3 v1, Vector3 v2)
+    {
+        if (v1.x != v2.x)
+            return false;
+        if (v1.y != v2.y)
+            return false;
+        if (v1.z != v2.z)
+            return false;
+        return true;
+    }
+
 
     void Start()
     {
 
+        controlVector = RandomVector(min, max);
+        rotate_Vector = new Vector3(0, controlVector.y, 0);
     }
-
-    // Update is called once per frame
-    public float period = 0.0f;
-    public float min = -5f, max = 5f;
-    public float speed = 0f;
-
-    public float x_range = 10, y_range = 10, z_range = 10;
-    public int rotationFactor = 8;
-
-
-
-
 
     void FixedUpdate()
     {
         var rb = GetComponent<Rigidbody>();
-        if (period > 0.5)
+
+        if (Vector3.Distance(transform.position, controlVector) < 0.001f)
         {
-            Vector3 controlVector = RandomVector(min, max);
-            period = 0;
+            Random.seed = System.DateTime.Now.Millisecond;
+            controlVector = RandomVector(min, max);
+            rotate_Vector = new Vector3(0, controlVector.y, 0);
 
-            rb.velocity = Vector3.Scale(controlVector, new Vector3(1, Mathf.Cos(controlVector.y), 1));
-            controlVector = new Vector3(0, controlVector.y * rotationFactor, 0);// control rotation
-            transform.Rotate(controlVector);
-            //transform.rotation = Quaternion.Euler(controlVector);
         }
-        period += UnityEngine.Time.deltaTime;
+        //movement
 
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        //transform.position += update_position * Time.deltaTime * speed;
+        transform.position = Vector3.MoveTowards(transform.position, controlVector, Time.deltaTime * speed);
+        // checking_vector = transform.position;
+
+        Debug.Log(controlVector);
+        // // Debug.Log(checking_vector);
+        // Debug.ClearDeveloperConsole();
+
+        //rotate
+        transform.Rotate(rotate_Vector * Time.deltaTime * rotationFactor);
+        //transform.rotation = Random.rotation;
+
+        //period += UnityEngine.Time.deltaTime;
+
+        //transform.Translate(Vector3.forward * Time.deltaTime * speed);
+
 
 
         Vector3 currentPosition = transform.position;
