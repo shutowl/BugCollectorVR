@@ -13,7 +13,7 @@ public class fly : MonoBehaviour
     private Vector3 RandomVector(float min, float max)
     {
         //Random.InitState(System.Environment.TickCount);
-        Random.seed = GetInstanceID();
+        //Random.InitState(GetInstanceID());
         float x = Random.Range(min, max); ;
         float y = Random.Range(0f, max); ;
         float z = Random.Range(min, max); ;
@@ -30,7 +30,7 @@ public class fly : MonoBehaviour
     public float x_range = 10, y_range = 10, z_range = 10;
     public int rotationFactor = 2;
 
-    private static Vector3 controlVector;
+    private Vector3 controlVector;
     private Vector3 rotate_Vector;
 
     private bool first = true;
