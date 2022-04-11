@@ -14,6 +14,7 @@ namespace Valve.VR.Extras
         public bool active = true;
         public Color color;
         public float thickness = 0.002f;
+        private float tempThickness = 0.002f;
         public Color clickColor = Color.green;
         public GameObject holder;
         public GameObject pointer;
@@ -86,6 +87,22 @@ namespace Valve.VR.Extras
         {
             if (PointerOut != null)
                 PointerOut(this, e);
+        }
+
+        public void Begin()
+        {
+            tempThickness = thickness;
+            setInactive();
+        }
+
+        public void setInactive()
+        {
+            thickness = 0f;
+        }
+
+        public void setActive()
+        {
+            thickness = tempThickness;
         }
 
 
