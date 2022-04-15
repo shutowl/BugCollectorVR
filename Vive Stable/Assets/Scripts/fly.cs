@@ -101,9 +101,9 @@ public class fly : MonoBehaviour
             Destroy(gameObject);
 
         }
-        else
+        if(collision.gameObject.tag == "Debris")
         {
-
+            speed = speed /2;
         }
     }
 
