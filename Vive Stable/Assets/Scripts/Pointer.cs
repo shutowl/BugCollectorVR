@@ -29,11 +29,21 @@ public class Pointer : MonoBehaviour
             menu.testButton();
             //Debug.Log("Test Button was clicked");
         }
+        if(e.target.name == "Reset Net Button")
+        {
+            menu.resetNet();
+            //Debug.Log("Reset Net Button was clicked");
+        }
+        if (e.target.name == "Reset Player Button")
+        {
+            menu.resetPlayer();
+            //Debug.Log("Reset Player Button was clicked");
+        }
     }
 
     public void PointerInside(object sender, PointerEventArgs e)
     {
-        if (e.target.name == "Canvas" || e.target.name == "Test Button")
+        if (e.target.name == "Canvas" || e.target.name == "Test Button" || e.target.name == "Reset Net Button" || e.target.name == "Reset Player Button")
         {
             Debug.Log("Canvas was entered");
             laserPointer.setActive();

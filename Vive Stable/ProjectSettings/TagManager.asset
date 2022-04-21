@@ -7,6 +7,8 @@ TagManager:
   - net
   - Undefined
   - Debris
+  - Bug
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

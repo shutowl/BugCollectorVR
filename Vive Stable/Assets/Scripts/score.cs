@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class score : MonoBehaviour
 {
-    public Text text;
+    //public Text text;
     public static int Score = 0;
+    public static float Money = 100f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Score: " + Score.ToString();
+        //text.text = "Score: " + Score.ToString();
     }
     void OnGUI()
     {

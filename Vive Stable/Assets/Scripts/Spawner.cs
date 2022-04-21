@@ -4,23 +4,44 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    private float period = 0;
-    public GameObject butterfly;
+    public float spawnSpeed = 2f;       //Bugs spawn once every (spawnSpeed) seconds
+    private float timer = 0;            //local timer
+    public int maxBugs = 20;            //Max number of bugs allowed on the field
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int bugsLeftSerialize;
+    static int bugsLeft = 0;            //Counts how many bugs are still uncaught
 
-    // Update is called once per frame
+    public GameObject[] bugs;
+
+    public Transform[] spawnPos;        //Position of spawns
+
     void Update()
     {
-        if(period > 2)
+        if (bugsLeft < maxBugs)
         {
-            Instantiate(butterfly, new Vector3(0, 0, 0), Quaternion.identity);
-            period = 0;
+            if (timer > spawnSpeed)
+            {
+                SpawnFlyingBug();
+                timer = 0;
+            }
+            timer += Time.deltaTime;
         }
-        period += Time.deltaTime;
+
+        //bugs = GameObject.FindGameObjectsWithTag("Bug");
+        //bugsLeft = bugs.Length;
+        bugsLeftSerialize = bugsLeft;
     }
+
+    public static void bugCaught()
+    {
+        bugsLeft--;
+    }
+
+    void SpawnFlyingBug()
+    {
+        Instantiate(bugs[Random.Range(0, bugs.Length)], spawnPos[Random.Range(0, spawnPos.Length)].position, Quaternion.identity);        //Creates a random bug at one of the spawn points
+        bugsLeft++;
+    }
+
+
 }

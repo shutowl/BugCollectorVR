@@ -7,22 +7,11 @@ using UnityEngine.UI;
 
 public class fly : MonoBehaviour
 {
-    public Text scoreText;
-    // Start is called before the first frame update
+    private Text scoreText;
+    private Text moneyText;
+    public int points = 10;             //how many points the bug is worth
+    public float value = 30f;           //how much the bug is worth
 
-    private Vector3 RandomVector(float min, float max)
-    {
-        //Random.InitState(System.Environment.TickCount);
-        //Random.InitState(GetInstanceID());
-        float x = Random.Range(min, max); ;
-        float y = Random.Range(0f, max); ;
-        float z = Random.Range(min, max); ;
-        return new Vector3(x, y, z);
-    }
-
-
-
-    // Update is called once per frame
     //public float period = 0.0f;
     public float min = -5f, max = 5f;
     public float speed = 1;
@@ -33,16 +22,12 @@ public class fly : MonoBehaviour
     private Vector3 controlVector;
     private Vector3 rotate_Vector;
 
-    private bool first = true;
-
-
-
-
-    
-
+    //private bool first = true;
 
     void Start()
     {
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+        moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
 
         controlVector = RandomVector(min, max);
         rotate_Vector = new Vector3(0, controlVector.y, 0);
@@ -95,16 +80,33 @@ public class fly : MonoBehaviour
     {
         if (collision.gameObject.tag == "net")
         {
-            score.Score++;
+            score.Money += value;
+            moneyText.text = "Money: $" + score.Money;
+            score.Score += points;
             scoreText.text = "Score: " + score.Score;
+
+            Spawner.bugCaught();
+
             gameObject.SetActive(false);
             Destroy(gameObject);
+
 
         }
         if(collision.gameObject.tag == "Debris")
         {
-            speed = speed /2;
+            speed = Mathf.Clamp(speed /2, 1, speed);
+            value = Mathf.Clamp(value - 10, 10, value);
         }
+    }
+
+    private Vector3 RandomVector(float min, float max)
+    {
+        //Random.InitState(System.Environment.TickCount);
+        //Random.InitState(GetInstanceID());
+        float x = Random.Range(min, max); ;
+        float y = Random.Range(0f, max); ;
+        float z = Random.Range(min, max); ;
+        return new Vector3(x, y, z);
     }
 
 
