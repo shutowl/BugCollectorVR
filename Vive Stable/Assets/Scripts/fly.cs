@@ -9,7 +9,7 @@ public class fly : MonoBehaviour
 {
     private Text scoreText;
     private Text moneyText;
-    public int points = 10;             //how many points the bug is worth
+    private int points;                 //how many points the bug is worth
     public float value = 30f;           //how much the bug is worth
 
     //public float period = 0.0f;
@@ -31,6 +31,8 @@ public class fly : MonoBehaviour
 
         controlVector = RandomVector(min, max);
         rotate_Vector = new Vector3(0, controlVector.y, 0);
+
+        points = (int)value * 10;
     }
 
     void FixedUpdate()
@@ -56,7 +58,8 @@ public class fly : MonoBehaviour
         //Debug.Log(GetInstanceID());
 
         //rotate
-        transform.Rotate(rotate_Vector * Time.deltaTime * rotationFactor);
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, controlVector - transform.position, speed * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
         //transform.rotation = Random.rotation;
 
         //period += UnityEngine.Time.deltaTime;

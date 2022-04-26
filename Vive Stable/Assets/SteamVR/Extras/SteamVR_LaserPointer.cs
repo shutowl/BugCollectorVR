@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace Valve.VR.Extras
+namespace Valve.VR
 {
     public class SteamVR_LaserPointer : MonoBehaviour
     {
