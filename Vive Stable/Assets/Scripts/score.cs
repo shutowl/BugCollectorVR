@@ -7,7 +7,7 @@ public class score : MonoBehaviour
 {
     //public Text text;
     public static int Score = 0;
-    public static float Money = 100f;
+    public static float Money = 1000f;
     // Start is called before the first frame update
     void Start()
     {

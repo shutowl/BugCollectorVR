@@ -46,14 +46,14 @@ public class Pointer : MonoBehaviour
         }
         if (e.target.name == "Reset Net Size Button")
         {
-            menu.resetNetPos();
+            menu.resetNetSize();
             //Debug.Log("Reset Player Button was clicked");
         }
     }
 
     public void PointerInside(object sender, PointerEventArgs e)
     {
-        if (e.target.name == "Canvas" || e.target.name == "Test Button" || e.target.name == "Reset Net Button" || e.target.name == "Reset Player Button"
+        if (e.target.name == "Canvas" || e.target.name == "Test Button" || e.target.name == "Reset Net Pos Button" || e.target.name == "Reset Player Button"
             || e.target.name == "Increase Net Button" || e.target.name == "Reset Net Size Button")
         {
             Debug.Log("Canvas was entered");
