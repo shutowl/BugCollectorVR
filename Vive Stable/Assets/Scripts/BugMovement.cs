@@ -96,9 +96,9 @@ public class BugMovement : MonoBehaviour
     }
 
 
-    void OnTriggerEnter(Collider collision)
+    void OnTriggerEnter(Collider collision, GameObject detectObject)
     {
-        if (collision.gameObject.tag == "net")
+        if (collision.gameObject.tag == detectObject)
         {
             score.Money += value;
             moneyText.text = "Money: $" + score.Money;
