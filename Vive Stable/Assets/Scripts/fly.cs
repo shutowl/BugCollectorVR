@@ -33,11 +33,12 @@ public class fly : MonoBehaviour
         rotate_Vector = new Vector3(0, controlVector.y, 0);
 
         points = (int)value * 10;
+        var rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
-        var rb = GetComponent<Rigidbody>();
+       
 
         if (Vector3.Distance(transform.position, controlVector) < 0.001f)
         {

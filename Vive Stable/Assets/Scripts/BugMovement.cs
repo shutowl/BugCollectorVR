@@ -25,7 +25,7 @@ public class BugMovement : MonoBehaviour
     private Text scoreText;              //Keeps track of the Score Text UI
     private Text moneyText;
 
-    private int points;                  //how many points the bug is worth
+    public int points;                  //how many points the bug is worth
     public float value = 30f;           //how much the bug is worth
 
     public Vector3 maxPos;
