@@ -1928,15 +1928,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c80b44555e0fad4390f82a827a6135c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.012
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c80b44555e0fad4390f82a827a6135c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.012
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c80b44555e0fad4390f82a827a6135c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.012
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c80b44555e0fad4390f82a827a6135c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1944,7 +1944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c80b44555e0fad4390f82a827a6135c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7734953
+      value: 3.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c80b44555e0fad4390f82a827a6135c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6695,7 +6695,7 @@ GameObject:
   - component: {fileID: 1741296753}
   - component: {fileID: 1741296752}
   m_Layer: 0
-  m_Name: Ambience
+  m_Name: AmbientSounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
