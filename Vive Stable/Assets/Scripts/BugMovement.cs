@@ -33,7 +33,6 @@ public class BugMovement : MonoBehaviour
     Vector3 newPos;
 
     private float timer = 0f;
-
     void Start()
     {
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
@@ -96,17 +95,17 @@ public class BugMovement : MonoBehaviour
     }
 
 
-    void OnTriggerEnter(Collider collision, GameObject detectObject)
+    void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == detectObject)
+        if (collision.gameObject.tag == "net")
         {
             score.Money += value;
             moneyText.text = "Money: $" + score.Money;
             score.Score += points;
             scoreText.text = "Score: " + score.Score;
 
+            
             Spawner.bugCaught();
-
             gameObject.SetActive(false);
             Destroy(gameObject);
 
