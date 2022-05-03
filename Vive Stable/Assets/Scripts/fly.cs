@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 
 
-public class fly : MonoBehaviour
+public class Fly : MonoBehaviour
 {
-    private Text scoreText;
-    private Text moneyText;
+    [SerializeField] private Text scoreText;
+    [SerializeField] private Text moneyText;
     private int points;                 //how many points the bug is worth
     public float value = 30f;           //how much the bug is worth
 
@@ -26,9 +26,6 @@ public class fly : MonoBehaviour
 
     void Start()
     {
-        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
-        moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
-
         controlVector = RandomVector(min, max);
         rotate_Vector = new Vector3(0, controlVector.y, 0);
 
@@ -38,7 +35,7 @@ public class fly : MonoBehaviour
 
     void FixedUpdate()
     {
-       
+
 
         if (Vector3.Distance(transform.position, controlVector) < 0.001f)
         {
@@ -80,26 +77,31 @@ public class fly : MonoBehaviour
 
 
     }
+    void Die() //dying is a function so it can be called outside of just being hit with a net (powerups?)
+    {
+        score.Money += value;
+        moneyText.text = "Money: $" + score.Money;
+        score.Score += points;
+        scoreText.text = "Score: " + score.Score;
+
+        Spawner.bugCaught();
+        gameObject.SetActive(false);
+        Destroy(gameObject);
+    }
+    void HitByDebris()
+    {
+        speed = Mathf.Clamp(speed / 2, 1, speed);
+        value = Mathf.Clamp(value - 10, 10, value);
+    }
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "net")
         {
-            score.Money += value;
-            moneyText.text = "Money: $" + score.Money;
-            score.Score += points;
-            scoreText.text = "Score: " + score.Score;
-
-            Spawner.bugCaught();
-
-            gameObject.SetActive(false);
-            Destroy(gameObject);
-
-
+            Die();
         }
-        if(collision.gameObject.tag == "Debris")
+        if (collision.gameObject.tag == "Debris")
         {
-            speed = Mathf.Clamp(speed /2, 1, speed);
-            value = Mathf.Clamp(value - 10, 10, value);
+            HitByDebris();
         }
     }
 

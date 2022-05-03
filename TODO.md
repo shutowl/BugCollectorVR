@@ -1,8 +1,10 @@
 # Todo list
 
-- [ ] Add HDRI background
+- [x] Add HDRI background
 
-- [ ] write death function for bugs (so that it can be called from other places easier)
+- [x] Serialize fields instead of GameObject.Find due to https://akbiggs.silvrback.com/please-stop-using-gameobject-find
+
+- [x] write death function for bugs (so that it can be called from other places easier)
 
 - [ ] Add death animations to bugs
 

@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    private Text scoreText;
-    private Text moneyText;
+    [SerializeField] private Text scoreText;
+    [SerializeField] private Text moneyText;
     public Transform net;
     public Transform player;
     private Vector3 startNetPos;
@@ -20,9 +20,6 @@ public class Menu : MonoBehaviour
         startNetRot = net.transform.rotation;
         startNetScale = net.localScale;
         startPlayerPos = player.transform.position;
-
-        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
-        moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
 
         scoreText.text = "Score: " + score.Score;
         moneyText.text = "Money: $" + score.Money;
@@ -53,7 +50,7 @@ public class Menu : MonoBehaviour
 
     public void buyNet()
     {
-        if(score.Money >= 500)
+        if (score.Money >= 500)
         {
             Vector3 netScale = net.localScale;
             netScale.x += 0.03f;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3819084682111714139}
   m_Layer: 0
   m_Name: Butterfly
-  m_TagString: Untagged
+  m_TagString: Bug
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f884e084dabebf41a443c3e8dad946e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  moneyText: {fileID: 0}
   value: 100
   min: -5
   max: 5
