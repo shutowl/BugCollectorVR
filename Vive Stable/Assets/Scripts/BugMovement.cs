@@ -15,24 +15,31 @@ public class BugMovement : MonoBehaviour
 
     [SerializeField] private GameObject player;
     private Vector3 startPlayerPos;
-    public int speed = 20;              //Determine speed of bug
 
+    [Header("Movement Variables")]
+    public int speed = 20; [Tooltip("How quickly the bug moves.")] //Determine speed of bug
     public float waveSpeed = 0.2f;      //Determine wave frequency
     public float waveHeight = 0.4f;     //Determine wave amplitude
     private float yStart;               //Starting wave y position (minimum)
     private float yEnd;                 //Ending wave y position   (maximum)
+    public Vector3 maxPos; [Tooltip("Maximum corner of area movement.")]
+    public Vector3 minPos; [Tooltip("Minimum corner of area movement.")]
+    Vector3 newPos;
 
+    [Header("Money and Points Text UI")]
     [SerializeField] private Text scoreText;              //Keeps track of the Score Text UI
     [SerializeField] private Text moneyText;
 
+    [Header("Money and Points Values")]
     public int points;                  //how many points the bug is worth
     public float value = 30f;           //how much the bug is worth
 
-    public Vector3 maxPos;
-    public Vector3 minPos;
-    Vector3 newPos;
 
     private float timer = 0f;
+    [Header("Death Animation")]
+    public float targetScale = 0.01f; [Tooltip("Scale for death animation.")]
+    public float timeToLerp = 0.25f; [Tooltip("Time for death animation.")]
+    float scaleModifier = 1;
     void Start()
     {
         yStart = transform.position.y;
@@ -42,7 +49,7 @@ public class BugMovement : MonoBehaviour
         points = (int)value * 10;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         switch (behavior.ToString().ToLower())
         {
@@ -90,6 +97,8 @@ public class BugMovement : MonoBehaviour
     }
     void Die() //dying is a function so it can be called outside of just being hit with a net (powerups?)
     {
+        StartCoroutine(LerpScale(targetScale, timeToLerp));
+
         score.Money += value;
         moneyText.text = "Money: $" + score.Money;
         score.Score += points;
@@ -100,13 +109,13 @@ public class BugMovement : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void HitByDebris()
+    void HitByDebris() //getting hit by debris is a function so it can be called outside of just being hit with a rock (powerups?)
     {
         speed = Mathf.Clamp(speed / 2, 1, speed);
         value = Mathf.Clamp(value - 10, 10, value);
     }
 
-    void OnTriggerEnter(Collider collision)
+    void OnTriggerEnter(Collider collision) //this handles all interactions with physics colliders
     {
         if (collision.gameObject.tag == "net")
         {
@@ -116,6 +125,23 @@ public class BugMovement : MonoBehaviour
         {
             HitByDebris();
         }
+    }
+
+    IEnumerator LerpScale(float endValue, float duration)
+    {
+        float time = 0;
+        float startValue = scaleModifier;
+        Vector3 startScale = transform.localScale;
+        while (time < duration)
+        {
+            scaleModifier = Mathf.Lerp(startValue, endValue, time / duration);
+            transform.localScale = startScale * scaleModifier;
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = startScale * endValue;
+        scaleModifier = endValue;
     }
 
 

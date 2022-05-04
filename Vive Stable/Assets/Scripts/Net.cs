@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Net : MonoBehaviour
 {
-   public AudioSource clankSound;
+    [Tooltip("Sound that plays when the net hits something.")]
+    public AudioSource clankSound;
 
     void Start()
     {
@@ -15,16 +16,16 @@ public class Net : MonoBehaviour
     {
 
         //if (collision.relativeVelocity.magnitude > 1){
-            if (!clankSound.isPlaying && collision.gameObject.tag != "bug")
-            {
-                clankSound.Play();
-            }
+        if (!clankSound.isPlaying && collision.gameObject.tag != "bug")
+        {
+            clankSound.Play();
+        }
         //}
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
