@@ -6,19 +6,17 @@
 
 - [x] write death function for bugs (so that it can be called from other places easier)
 
-- [ ] Add death animations to bugs
+- [x] Add death animations to bugs
 
 - [ ] add death sounds to bugs
 
-- [ ] Add Table and chair to scene
+- [x] Add Table and chair to scene
 
 - [ ] Change Menu Fonts
 
 - [ ] Make title screen
 
 - [ ] add sounds to bugs
-
-- [ ] switch from SteamVR scripts to OpenXR
 
 - [ ] new spawning system
   - [ ] bugs spawn in area around player, not just in specific points
@@ -32,5 +30,7 @@
 - [x] add cloth physics to net
 
 - [x] add sounds to net
+
+- [ ] switch from SteamVR scripts to OpenXR (would allow building to different hardward targets)
 
   
