@@ -1,58 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 
 
 public class fly : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Text scoreText;
+    private Text moneyText;
+    private int points;                 //how many points the bug is worth
+    public float value = 30f;           //how much the bug is worth
 
-    private Vector3 RandomVector(float min, float max)
-    {
-        Random.InitState(System.Environment.TickCount);
-        float x = Random.Range(min, max); ;
-        float y = Random.Range(0f, max); ;
-        float z = Random.Range(min, max); ;
-        return new Vector3(x, y, z);
-    }
-
-
-
-    // Update is called once per frame
     //public float period = 0.0f;
     public float min = -5f, max = 5f;
-    public float speed = 1;
+    public float speed = 3;
 
     public float x_range = 10, y_range = 10, z_range = 10;
     public int rotationFactor = 2;
 
-    private static Vector3 controlVector;
+    private Vector3 controlVector;
     private Vector3 rotate_Vector;
+    public float period = 0.0f;
 
-    private bool first = true;
-
-
-
-
-    public static bool isEqual(Vector3 v1, Vector3 v2)
-    {
-        if (v1.x != v2.x)
-            return false;
-        if (v1.y != v2.y)
-            return false;
-        if (v1.z != v2.z)
-            return false;
-        return true;
-    }
-
+    //private bool first = true;
 
     void Start()
     {
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+        moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
 
         controlVector = RandomVector(min, max);
         rotate_Vector = new Vector3(0, controlVector.y, 0);
+
+        points = (int)value * 10;
     }
 
     void FixedUpdate()
@@ -61,23 +42,45 @@ public class fly : MonoBehaviour
 
         if (Vector3.Distance(transform.position, controlVector) < 0.001f)
         {
-            Random.seed = System.DateTime.Now.Millisecond;
+            //Random.seed = System.DateTime.Now.Millisecond;
             controlVector = RandomVector(min, max);
             rotate_Vector = new Vector3(0, controlVector.y, 0);
 
         }
         //movement
+        if (period > 1)
+        {
+            if (Vector3.Distance(transform.position, GameObject.FindWithTag("net").transform.position) < 1f)
+            {
+                Debug.Log(GameObject.FindWithTag("net").transform.position);
+                speed = speed * 2;
+                controlVector = RandomVector(min, max);
+                rotate_Vector = new Vector3(0, controlVector.y, 0);
+
+            }
+            else
+            {
+                speed = 3;
+            }
+            period = 0;
+
+
+        }
+        period += UnityEngine.Time.deltaTime;
+
 
         //transform.position += update_position * Time.deltaTime * speed;
         transform.position = Vector3.MoveTowards(transform.position, controlVector, Time.deltaTime * speed);
         // checking_vector = transform.position;
 
-        Debug.Log(controlVector);
+        //Debug.Log(controlVector);
         // // Debug.Log(checking_vector);
         // Debug.ClearDeveloperConsole();
+        //Debug.Log(GetInstanceID());
 
         //rotate
-        transform.Rotate(rotate_Vector * Time.deltaTime * rotationFactor);
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, controlVector - transform.position, speed * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
         //transform.rotation = Random.rotation;
 
         //period += UnityEngine.Time.deltaTime;
@@ -101,15 +104,33 @@ public class fly : MonoBehaviour
     {
         if (collision.gameObject.tag == "net")
         {
-            score.Score = score.Score + 1;
+            score.Money += value;
+            moneyText.text = "Money: $" + score.Money;
+            score.Score += points;
+            scoreText.text = "Score: " + score.Score;
+
+            Spawner.bugCaught();
+
             gameObject.SetActive(false);
-            //Destroy(gameObject);
+            Destroy(gameObject);
+
 
         }
-        else
+        if (collision.gameObject.tag == "Debris")
         {
-
+            speed = Mathf.Clamp(speed / 2, 1, speed);
+            value = Mathf.Clamp(value - 10, 10, value);
         }
+    }
+
+    private Vector3 RandomVector(float min, float max)
+    {
+        //Random.InitState(System.Environment.TickCount);
+        //Random.InitState(GetInstanceID());
+        float x = Random.Range(min, max); ;
+        float y = Random.Range(0f, max); ;
+        float z = Random.Range(min, max); ;
+        return new Vector3(x, y, z);
     }
 
 
