@@ -2,13 +2,13 @@
   "source": "Unity",
   "applications": [
     {
-      "app_key": "application.generated.unity.test.exe",
+      "app_key": "application.generated.unity.bugcatchervr.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\Kenneth\\Desktop\\Schoolwork\\College\\Spring_2022\\CPP VR Lab\\BugCollectorVR\\Vive Stable\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "D:\\BugCatcherGroup\\BugCollectorVR\\BugCollectorVR\\Vive Stable\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
-          "name": "test [Testing]"
+          "name": "BugCatcherVR [Testing]"
         }
       }
     }

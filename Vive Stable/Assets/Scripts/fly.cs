@@ -14,13 +14,15 @@ public class fly : MonoBehaviour
 
     //public float period = 0.0f;
     public float min = -5f, max = 5f;
-    public float speed = 1;
+    public float speed = 3;
+    private float tempSpeed;
 
     public float x_range = 10, y_range = 10, z_range = 10;
     public int rotationFactor = 2;
 
     private Vector3 controlVector;
     private Vector3 rotate_Vector;
+    public float period = 0.0f;
 
     //private bool first = true;
 
@@ -33,6 +35,7 @@ public class fly : MonoBehaviour
         rotate_Vector = new Vector3(0, controlVector.y, 0);
 
         points = (int)value * 10;
+        tempSpeed = speed;
     }
 
     void FixedUpdate()
@@ -47,6 +50,27 @@ public class fly : MonoBehaviour
 
         }
         //movement
+        if (period > 0.5)
+        {
+            if (Vector3.Distance(transform.position, GameObject.FindWithTag("net").transform.position) < 1f)
+            {
+                Debug.Log(GameObject.FindWithTag("net").transform.position);
+                tempSpeed = speed;
+                speed = speed * 2;
+                controlVector = RandomVector(min, max);
+                rotate_Vector = new Vector3(0, controlVector.y, 0);
+
+            }
+            else
+            {
+                speed = tempSpeed;
+            }
+            period = 0;
+
+
+        }
+        period += UnityEngine.Time.deltaTime;
+
 
         //transform.position += update_position * Time.deltaTime * speed;
         transform.position = Vector3.MoveTowards(transform.position, controlVector, Time.deltaTime * speed);
@@ -95,9 +119,9 @@ public class fly : MonoBehaviour
 
 
         }
-        if(collision.gameObject.tag == "Debris")
+        if (collision.gameObject.tag == "Debris")
         {
-            speed = Mathf.Clamp(speed /2, 1, speed);
+            speed = Mathf.Clamp(speed / 2, 1, speed);
             value = Mathf.Clamp(value - 10, 10, value);
         }
     }
