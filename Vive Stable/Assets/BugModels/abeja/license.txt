@@ -1,0 +1,11 @@
+Model Information:
+* title:	Abeja
+* source:	https://sketchfab.com/3d-models/abeja-f384c01929c74ff49375cb5f79f03466
+* author:	aaronlpzr (https://sketchfab.com/aaronlpzr)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Abeja" (https://sketchfab.com/3d-models/abeja-f384c01929c74ff49375cb5f79f03466) by aaronlpzr (https://sketchfab.com/aaronlpzr) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

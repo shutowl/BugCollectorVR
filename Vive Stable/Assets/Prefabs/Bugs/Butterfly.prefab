@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3231712134682793257}
-  - component: {fileID: 8537325603664134514}
   - component: {fileID: 3819084682111714139}
-  m_Layer: 0
+  - component: {fileID: 8537325603664134514}
+  m_Layer: 2
   m_Name: Butterfly
   m_TagString: Bug
   m_Icon: {fileID: 0}
@@ -33,28 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8537325603664134514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5231335585647906463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f884e084dabebf41a443c3e8dad946e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  moneyText: {fileID: 0}
-  value: 100
-  min: -5
-  max: 5
-  speed: 3
-  x_range: 10
-  y_range: 10
-  z_range: 10
-  rotationFactor: 0
 --- !u!135 &3819084682111714139
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -68,6 +46,32 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.41, z: -0.06}
+--- !u!114 &8537325603664134514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231335585647906463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f884e084dabebf41a443c3e8dad946e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRandom: -5
+  maxRandom: 5
+  speed: 3
+  x_range: 10
+  y_range: 10
+  z_range: 10
+  range: {x: 10, y: 10, z: 10}
+  rotationFactor: 0
+  period: 0
+  scoreText: {fileID: 0}
+  moneyText: {fileID: 0}
+  value: 100
+  targetScale: 0.01
+  timeToLerp: 0.25
 --- !u!1001 &7122047197836937920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +130,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a08eacb3e930d18499309326e79a488c, type: 3}
       propertyPath: m_Name
       value: batterfly_yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a08eacb3e930d18499309326e79a488c, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a08eacb3e930d18499309326e79a488c, type: 3}

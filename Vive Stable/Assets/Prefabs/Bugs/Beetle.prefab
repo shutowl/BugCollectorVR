@@ -579,12 +579,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behavior: 0
+  player: {fileID: 0}
+  rotationOffset: {x: 0, y: 0, z: 0, w: 0}
+  startYoffset: 0
   speed: 5
   waveSpeed: 0
   waveHeight: 0
-  value: 50
   maxPos: {x: 7, y: 0, z: 8}
   minPos: {x: -3, y: 0, z: -10}
+  scoreText: {fileID: 0}
+  moneyText: {fileID: 0}
+  points: 0
+  value: 20
+  targetScale: 0.01
+  timeToLerp: 0.25
 --- !u!1 &4592292786633620477
 GameObject:
   m_ObjectHideFlags: 0

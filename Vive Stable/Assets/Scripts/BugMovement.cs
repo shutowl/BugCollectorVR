@@ -15,6 +15,8 @@ public class BugMovement : MonoBehaviour
 
     [SerializeField] private GameObject player;
     private Vector3 startPlayerPos;
+    public Quaternion rotationOffset;
+    public float startYoffset = 0f;     //The starting y position of a bug
 
     [Header("Movement Variables")]
     public int speed = 20; [Tooltip("How quickly the bug moves.")] //Determine speed of bug
@@ -25,6 +27,7 @@ public class BugMovement : MonoBehaviour
     public Vector3 maxPos; [Tooltip("Maximum corner of area movement.")]
     public Vector3 minPos; [Tooltip("Minimum corner of area movement.")]
     Vector3 newPos;
+    private float timer = 0f;           //time between 2 locations
 
     [Header("Money and Points Text UI")]
     [SerializeField] private Text scoreText;              //Keeps track of the Score Text UI
@@ -34,22 +37,29 @@ public class BugMovement : MonoBehaviour
     public int points;                  //how many points the bug is worth
     public float value = 30f;           //how much the bug is worth
 
-
-    private float timer = 0f;
     [Header("Death Animation")]
     public float targetScale = 0.01f; [Tooltip("Scale for death animation.")]
     public float timeToLerp = 0.25f; [Tooltip("Time for death animation.")]
     float scaleModifier = 1;
+
     void Start()
     {
+        //Assign gameobjects because prefabs still need to find them
+        player = GameObject.Find("Player");
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+        moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
+
+        transform.rotation = rotationOffset;
+        transform.position = new Vector3(transform.position.x, startYoffset, transform.position.z);
         yStart = transform.position.y;
         yEnd = transform.position.y + waveHeight;
         startPlayerPos = player.transform.position;
         newPos = transform.position;
+
         points = (int)value * 10;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         switch (behavior.ToString().ToLower())
         {
@@ -113,6 +123,7 @@ public class BugMovement : MonoBehaviour
     {
         speed = Mathf.Clamp(speed / 2, 1, speed);
         value = Mathf.Clamp(value - 10, 10, value);
+        points = (int)value * 10;
     }
 
     void OnTriggerEnter(Collider collision) //this handles all interactions with physics colliders

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Spider
+* source:	https://sketchfab.com/3d-models/spider-164dec837ac040e0880169e0fe952a3d
+* author:	Murat Can ÜNAL (https://sketchfab.com/avanar)
+
+Model License:
+* license type:	CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
+* requirements:	Author must be credited. Modified versions must have the same license. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Spider" (https://sketchfab.com/3d-models/spider-164dec837ac040e0880169e0fe952a3d) by Murat Can ÜNAL (https://sketchfab.com/avanar) licensed under CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
