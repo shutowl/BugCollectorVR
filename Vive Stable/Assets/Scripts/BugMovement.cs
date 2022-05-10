@@ -49,7 +49,7 @@ public class BugMovement : MonoBehaviour
         points = (int)value * 10;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         switch (behavior.ToString().ToLower())
         {

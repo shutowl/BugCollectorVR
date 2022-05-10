@@ -8,6 +8,8 @@
 
 - [x] Add death animations to bugs
 
+- [ ] Fix bug script (have to use gameobject.find??)
+
 - [ ] add death sounds to bugs
 
 - [x] Add Table and chair to scene
@@ -32,5 +34,7 @@
 - [x] add sounds to net
 
 - [ ] switch from SteamVR scripts to OpenXR (would allow building to different hardward targets)
+
+- [ ] add meusem scene (displays are modeled, need to model room)
 
   
