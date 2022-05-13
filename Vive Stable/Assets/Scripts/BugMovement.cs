@@ -42,6 +42,8 @@ public class BugMovement : MonoBehaviour
     public float timeToLerp = 0.25f; [Tooltip("Time for death animation.")]
     float scaleModifier = 1;
 
+    Animator animator;
+
     void Start()
     {
         //Assign gameobjects because prefabs still need to find them
@@ -57,6 +59,8 @@ public class BugMovement : MonoBehaviour
         newPos = transform.position;
 
         points = (int)value * 10;
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -107,6 +111,7 @@ public class BugMovement : MonoBehaviour
     }
     void Die() //dying is a function so it can be called outside of just being hit with a net (powerups?)
     {
+        animator.SetBool("isDead", true);
         StartCoroutine(LerpScale(targetScale, timeToLerp));
 
         score.Money += value;

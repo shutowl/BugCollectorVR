@@ -16,6 +16,8 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        net = GameObject.FindWithTag("net").GetComponent<Transform>();
+
         startNetPos = net.transform.position;
         startNetRot = net.transform.rotation;
         startNetScale = net.localScale;
@@ -53,9 +55,9 @@ public class Menu : MonoBehaviour
         if (score.Money >= 500)
         {
             Vector3 netScale = net.localScale;
-            netScale.x += 0.03f;
-            netScale.y += 0.03f;
-            netScale.z += 0.03f;
+            netScale.x += 1f;
+            netScale.y += 1f;
+            netScale.z += 1f;
             net.localScale = netScale;
 
             score.Money -= 500;

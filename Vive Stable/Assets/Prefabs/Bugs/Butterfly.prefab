@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3231712134682793257}
   - component: {fileID: 3819084682111714139}
   - component: {fileID: 8537325603664134514}
+  - component: {fileID: 4472386884510429685}
   m_Layer: 2
   m_Name: Butterfly
   m_TagString: Bug
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5231335585647906463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.382, y: 0, z: 1.36}
-  m_LocalScale: {x: 0.57622, y: 0.57622, z: 0.57622}
+  m_LocalScale: {x: 0.26107374, y: 0.26107374, z: 0.26107374}
   m_Children:
   - {fileID: 7303749307232841003}
   m_Father: {fileID: 0}
@@ -72,6 +73,25 @@ MonoBehaviour:
   value: 100
   targetScale: 0.01
   timeToLerp: 0.25
+--- !u!95 &4472386884510429685
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231335585647906463}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7122047197836937920
 PrefabInstance:
   m_ObjectHideFlags: 0

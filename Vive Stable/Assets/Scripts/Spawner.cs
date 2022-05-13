@@ -15,6 +15,13 @@ public class Spawner : MonoBehaviour
 
     public Transform[] spawnPos;        //Position of spawns
 
+    //public GameObject net;
+
+    private void Start()
+    {
+        //Instantiate(net, new Vector3(-1f, 1f, -0.5f), Quaternion.identity);
+    }
+
     void Update()
     {
         if (bugsLeft < maxBugs)
