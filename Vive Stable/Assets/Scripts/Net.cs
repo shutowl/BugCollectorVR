@@ -16,7 +16,7 @@ public class Net : MonoBehaviour
     {
 
         //if (collision.relativeVelocity.magnitude > 1){
-        if (!clankSound.isPlaying && collision.gameObject.tag != "bug")
+        if (!clankSound.isPlaying && (collision.gameObject.tag == "terrain" || collision.gameObject.tag == "debris"))
         {
             clankSound.Play();
         }

@@ -1326,7 +1326,7 @@ GameObject:
   - component: {fileID: 1516266307}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1730,14 +1730,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair
       objectReference: {fileID: 0}
-    - target: {fileID: 1698313092175897028, guid: eeedd22ae95d1d141a528ade5c834a9d, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1968344700360793240, guid: eeedd22ae95d1d141a528ade5c834a9d, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2079060416536411006, guid: eeedd22ae95d1d141a528ade5c834a9d, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1781,10 +1773,6 @@ PrefabInstance:
     - target: {fileID: 2079060416536411006, guid: eeedd22ae95d1d141a528ade5c834a9d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 278.867
-      objectReference: {fileID: 0}
-    - target: {fileID: 7548717942249387898, guid: eeedd22ae95d1d141a528ade5c834a9d, type: 3}
-      propertyPath: m_Convex
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eeedd22ae95d1d141a528ade5c834a9d, type: 3}
@@ -1842,22 +1830,6 @@ PrefabInstance:
     - target: {fileID: 730161274383721624, guid: 84017bdd58120fb43878dddacafd935b, type: 3}
       propertyPath: m_Name
       value: Table
-      objectReference: {fileID: 0}
-    - target: {fileID: 730161274383721624, guid: 84017bdd58120fb43878dddacafd935b, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671641305168385653, guid: 84017bdd58120fb43878dddacafd935b, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2735423114250770070, guid: 84017bdd58120fb43878dddacafd935b, type: 3}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2735423114250770070, guid: 84017bdd58120fb43878dddacafd935b, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84017bdd58120fb43878dddacafd935b, type: 3}
