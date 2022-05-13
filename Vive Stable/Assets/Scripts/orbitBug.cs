@@ -45,8 +45,8 @@ public class orbitBug : MonoBehaviour
     void FixedUpdate()
     {
         var rb = GetComponent<Rigidbody>();
-        transform.RotateAround(player.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
-        var desiredPosition = (transform.position - GameObject.Find("Player").transform.position).normalized * radius + GameObject.Find("Player").transform.position;
+        transform.RotateAround(GameObject.Find("VRCamera").transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+        var desiredPosition = (transform.position - GameObject.Find("VRCamera").transform.position).normalized * radius + GameObject.Find("VRCamera").transform.position;
         transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
 
         rotationSpeed += UnityEngine.Time.deltaTime / 2;
