@@ -8,6 +8,7 @@ TagManager:
   - Debris
   - Bug
   - SpawnPoint
+  - terrain
   layers:
   - Default
   - TransparentFX

@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 1968344700360793240}
   - component: {fileID: 7548717942249387898}
   - component: {fileID: 1968344700360793239}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Chair
-  m_TagString: Untagged
+  m_TagString: Debris
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698313092175897028}
-  m_LocalRotation: {x: -0.70634764, y: 0.032757778, z: 0.032757778, w: 0.70634764}
+  m_LocalRotation: {x: -0.70634747, y: 0.032760695, z: 0.032760695, w: 0.70634747}
   m_LocalPosition: {x: -0.18587238, y: 0, z: 0.013739049}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
@@ -164,7 +164,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5655767826418204992, guid: dac8012dc2085d84db73c060343e4e24, type: 3}
 --- !u!114 &1968344700360793239
